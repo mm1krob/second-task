@@ -17,7 +17,7 @@
 
 	setDamage(damage){
 		this.health=this.health-damage;
-		console.log(this.health);
+		console.log(`суперник наніс удар на ${damage}, у ${this.name} залишилось ${this.health} життя`);
 	}
 	hit(enemy, point){
 		enemy.setDamage(point*this.power);
@@ -28,8 +28,10 @@ class ImprovedFighter extends Fighter{
 		super.hit(enemy,point*2);
 	}
 }
-let fighter= new Fighter('misha', 10, 1000); //block scoping (let)
-let improvedFighter= new ImprovedFighter('marta', 10,1000);//block scoping (let)
+let nameOfFighter=prompt('введіть імя першого гравця');
+let fighter= new Fighter(nameOfFighter, 10, 1000); //block scoping (let)
+let nameOfImprovedFighter=prompt('введіть імя другого гравця');
+let improvedFighter= new ImprovedFighter(nameOfImprovedFighter, 10,1000);//block scoping (let)
 
 let fight=(fighter, improvedFighter, ...point)=>{ //arrow function and  spread / rest 
 	while(fighter.health>0&&improvedFighter.health>0){
@@ -47,7 +49,7 @@ let fight=(fighter, improvedFighter, ...point)=>{ //arrow function and  spread /
 }
 
 
-fight(fighter, improvedFighter, 20,2,50)
+fight(fighter, improvedFighter, Math.floor(Math.random()*15), Math.floor(Math.random()*15),Math.floor(Math.random()*15),Math.floor(Math.random()*15),Math.floor(Math.random()*15));//randoms hits
 
 </script>
 </body>
